@@ -45,4 +45,15 @@
         android:layout_marginTop="-1dp"
         android:layout_toEndOf="@+id/tvScreenName"
         tools:text="3 min." />
+
+    <ImageView
+        android:id="@+id/ivEmbeddedView"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="23dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>

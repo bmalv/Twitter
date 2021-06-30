@@ -59,9 +59,24 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return tweets.size();
     }
 
+    /* Within the RecyclerView.Adapter class */
+
+    // Clean all elements of the recycler
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        tweets.addAll(list);
+        notifyDataSetChanged();
+    }
+
     //define  a view holder
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ivProfileImage;
+        ImageView ivEmbeddedImage;
         TextView tvBody;
         TextView tvScreenName;
         TextView tvCreatedAt;
@@ -73,6 +88,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
+            ivEmbeddedImage = itemView.findViewById(R.id.ivEmbeddedView);
         }
 
         public void bind(Tweet tweet) throws ParseException {
@@ -82,6 +98,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Glide.with(context)
                     .load(tweet.user.profileImageUrl)
                     .into(ivProfileImage);
+            if(tweet.getMediaUrlHttps() == null){
+                //there is no image
+                ivEmbeddedImage.setVisibility(View.GONE);
+            }else{
+                //there is an image
+                Glide.with(context)
+                        .load(tweet.getMediaUrlHttps())
+                        .into(ivEmbeddedImage);
+            }
         }
     }
 }
