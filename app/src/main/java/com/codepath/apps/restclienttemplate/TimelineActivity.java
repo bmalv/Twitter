@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,9 @@ import static com.codepath.apps.restclienttemplate.R.layout.activity_timeline;
 public class TimelineActivity extends AppCompatActivity {
 
     public static final String TAG = "TimelineActivity";
+
+    // REQUEST_CODE can be any value we like, used to determine the result type later
+    private final int REQUEST_CODE = 20;
 
     TwitterClient client;
     RecyclerView rvTweets;
@@ -89,11 +94,29 @@ public class TimelineActivity extends AppCompatActivity {
             //compose icon has been selected
             //navigate to the compose activity
             Intent intent = new Intent(this, ComposeActivity.class);
-            startActivity(intent);
+            //will launch the child activiy will give us back a tweet if the user has submitted a tweet corrrectly
+            startActivityForResult(intent, REQUEST_CODE);
             //we want to consume the tap of this menu item here so return true
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        //check if the request code is the same as the request code being passed in
+        //and check if the result code is result ok
+        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
+            //get data from the intent (tweet)
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //update the recycler view with this new tweet
+            //modify data source of tweets
+            tweets.add(0, tweet);
+            //update the adapter
+            adapter.notifyItemInserted(0);
+            rvTweets.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     //this method logs the user out when the logout button is clicked
