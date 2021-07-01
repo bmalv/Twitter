@@ -43,6 +43,9 @@ public class TimelineActivity extends AppCompatActivity {
     List<Tweet> tweets;
     TweetsAdapter adapter;
 
+    //instance of the progress action-view
+    MenuItem miActionProgressItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +99,6 @@ public class TimelineActivity extends AppCompatActivity {
                 JSONArray jsonArray = json.jsonArray;
                 //the data has come back, add new items to your adapter
                 try {
-                    //TODO: this is not giving the new tweets gives old tweets
                     adapter.addAll(Tweet.fromJsonArray(jsonArray));
                     adapter.notifyDataSetChanged();
                     Log.d(TAG, "adapter was notified of data change! ");
@@ -183,5 +185,24 @@ public class TimelineActivity extends AppCompatActivity {
         client.clearAccessToken();
         //navigate backwards to login screen
         finish();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Store instance of the menu item containing progress
+        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+
+        // Return to finish
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    public void showProgressBar() {
+        // Show progress item
+        miActionProgressItem.setVisible(true);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        miActionProgressItem.setVisible(false);
     }
 }
