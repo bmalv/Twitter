@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
@@ -17,34 +17,39 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
         tools:text="balv_" />
 
     <TextView
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvScreenName"
+        android:layout_below="@+id/tvUserName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:textColor="@color/design_default_color_on_secondary"
         tools:text="This is my Tweet!" />
 
     <TextView
         android:id="@+id/tvCreatedAt"
-        android:layout_width="wrap_content"
+        android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toEndOf="@+id/tvScreenName"
-        tools:text="3 min." />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="1dp"
+        android:textAlignment="viewEnd"
+        android:textSize="12sp"
+        tools:text="just now" />
 
     <ImageView
         android:id="@+id/ivEmbeddedView"
@@ -56,4 +61,55 @@
         android:layout_marginStart="51dp"
         android:layout_marginTop="23dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/likeBtn"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/ivEmbeddedView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="47dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+
+    <ImageButton
+        android:id="@+id/retweetBtn"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/ivEmbeddedView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="125dp"
+        android:layout_toStartOf="@+id/likeBtn"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke" />
+
+    <ImageButton
+        android:id="@+id/replyBtn"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivEmbeddedView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="92dp"
+        android:layout_toStartOf="@+id/retweetBtn"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/ic_vector_compose" />
+
+    <TextView
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvUserName"
+        android:textColor="#BE050505"
+        tools:text="balv" />
 </RelativeLayout>

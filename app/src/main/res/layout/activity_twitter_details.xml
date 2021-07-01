@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/twitter_blue_50">
 
     <ImageView
         android:id="@+id/ivATDProfileImage"
@@ -21,30 +22,102 @@
         android:id="@+id/tvATDScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvName"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="1dp"
+        android:textColor="#504F4F"
+        tools:text="@screenName" />
 
     <TextView
         android:id="@+id/tvATDBody"
-        android:layout_width="363dp"
-        android:layout_height="84dp"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/ivATDProfileImage"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="34dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="13dp"
         android:textAlignment="textStart"
+        android:textSize="16sp"
         tools:text="this is the tweet!" />
 
     <ImageView
         android:id="@+id/ivATDEmbeddedImage"
-        android:layout_width="240dp"
+        android:layout_width="313dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvATDBody"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="7dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="user name" />
+
+    <ImageButton
+        android:id="@+id/iLikeBtn"
+        android:layout_width="46dp"
+        android:layout_height="79dp"
+        android:layout_below="@+id/ivATDEmbeddedImage"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="241dp"
+        android:layout_toStartOf="@+id/iShareBtn"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+
+    <ImageButton
+        android:id="@+id/iRetweetBtn"
+        android:layout_width="55dp"
+        android:layout_height="82dp"
+        android:layout_below="@+id/ivATDEmbeddedImage"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="238dp"
+        android:layout_toStartOf="@+id/iLikeBtn"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke" />
+
+    <ImageButton
+        android:id="@+id/iReplyBtn"
+        android:layout_width="79dp"
+        android:layout_height="78dp"
+        android:layout_below="@+id/ivATDEmbeddedImage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="242dp"
+        android:layout_toStartOf="@+id/iRetweetBtn"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_vector_compose" />
+
+    <ImageButton
+        android:id="@+id/iShareBtn"
+        android:layout_width="45dp"
+        android:layout_height="76dp"
+        android:layout_below="@+id/ivATDEmbeddedImage"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="244dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/vector_compose_dm_fab" />
 
 </RelativeLayout>

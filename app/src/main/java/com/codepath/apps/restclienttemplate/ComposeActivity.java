@@ -1,6 +1,8 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,12 +35,17 @@ public class ComposeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
+        //showEditDialog();
 
-        //get refrence to the client
+        //get reference to the client
         client = TwitterApp.getRestClient(this);
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.ic_twitter);
 
 
         //set a click listener on the button
@@ -91,4 +98,10 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void showEditDialog() {
+//        FragmentManager fm = getSupportFragmentManager();
+//        EditNameDialogFragment editNameDialogFragment = EditNameDialogFragment.newInstance("Some Title");
+//        editNameDialogFragment.show(fm, "fragment_edit_name");
+//    }
 }
