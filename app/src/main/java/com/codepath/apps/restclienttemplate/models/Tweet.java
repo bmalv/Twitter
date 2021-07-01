@@ -93,4 +93,12 @@ public class Tweet {
         return mediaUrlHttps;
     }
 
+    public String getTweetBody(){ return body; }
+
+    public String getScreenName() { return user.screenName; }
+
+    public String getUserName() { return user.screenName; }
+
+    public String getProfileImageUrl() { return user.profileImageUrl; }
+
 }

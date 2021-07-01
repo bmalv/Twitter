@@ -13,6 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity android:name=".ComposeActivity"></activity>
+        <activity android:name=".TwitterDetailsActivity"></activity>
         <activity android:name=".TimelineActivity" />
         <activity
             android:name=".LoginActivity"

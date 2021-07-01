@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.util.List;
@@ -74,7 +76,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     }
 
     //define  a view holder
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView ivProfileImage;
         ImageView ivEmbeddedImage;
         TextView tvBody;
@@ -89,6 +91,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
             ivEmbeddedImage = itemView.findViewById(R.id.ivEmbeddedView);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Tweet tweet) throws ParseException {
@@ -106,6 +109,20 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 Glide.with(context)
                         .load(tweet.getMediaUrlHttps())
                         .into(ivEmbeddedImage);
+            }
+        }
+
+        public void onClick(View v){
+            int pos = getAdapterPosition();
+
+            if(pos != RecyclerView.NO_POSITION) {
+                Tweet tweet = tweets.get(pos);
+                //create intent for the new activity
+                Intent intent = new Intent(context, TwitterDetailsActivity.class);
+                //serialize the movie using parceler, use its short name as a key
+                intent.putExtra(Tweet.class.getSimpleName(), Parcels.wrap(tweet));
+                //show the activity
+                context.startActivity(intent);
             }
         }
     }
